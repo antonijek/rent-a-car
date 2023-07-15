@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "6614d7b0-f5d7-41b1-a3a4-d672cbbd44c7",
+		"name": "rent-a-car",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15331068"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n\"name\":\"parko\",\r\n\"email\":\"jarko@marko.com\",\r\n\"password\":\"12345678\",\r\n\"password_confirmation\": \"12345678\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"marko@marko.com\",\r\n    \"password\":\"12345678\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "curent user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "edit car",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "producer",
+									"value": "ford",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "focus",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2010",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/mb-com/Desktop/my docs/0-02-05-e0646f35a590c5eede7b28a835f52e3a35cefdaaf3bd090cfef4a248e1787421_299ac41058d8f419.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/cars/7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all cars",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "producer",
+									"value": "fica",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "srednja",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2010",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/mb-com/Desktop/musical-instruments-store/public/images/logotype4.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cars/24",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "serach car",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/cars/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "create reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"user_id\": 6,\r\n        \"car_id\":  11,\r\n        \"taken_at\": \"2023-07-05 15:30:00\",\r\n        \"returned_at\": \"2023-07-15 15:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reservation",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all reservations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "9|mfOkgZskOIOvUePFJlPUuDFhDrqYb0MS8I8Afdmb",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reservations",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-07-05 15:30:00",
+									"disabled": true
+								},
+								{
+									"key": "end_date",
+									"value": "2023-07-09 15:30:00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my-reservations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|HmrWJuy2nXLjsxhhJuuUDa5XYrtlTveCqitC4eb2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/my-reservations?start_date=2023-09-10 15:30:00&end_date=2023-09-25 15:30:00",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"my-reservations"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2023-09-10 15:30:00"
+								},
+								{
+									"key": "end_date",
+									"value": "2023-09-25 15:30:00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|HmrWJuy2nXLjsxhhJuuUDa5XYrtlTveCqitC4eb2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"car_id\": 10,\r\n    \"taken_at\": \"2023-08-01\",\r\n    \"returned_at\": \"2023-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reservation/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/reservation/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send mail",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "export to excel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/reservations-export",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservations-export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
