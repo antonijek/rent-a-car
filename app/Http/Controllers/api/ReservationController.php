@@ -95,27 +95,6 @@ class ReservationController extends Controller
         return Excel::download($export, 'reservations.xlsx');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function create(ReservationRequest $request)
     {
         $validatedData = $request->validated();
@@ -176,31 +155,40 @@ class ReservationController extends Controller
     public function update(UpdateReservationRequest $request, string $id)
     {
         $user = $request->user();
-        $reservation = Reservation::findOrFail($id);
+        $reservation = Reservation::find($id);
 
-        // Check if the user is either an admin or the user who made the reservation
+        if (!$reservation) {
+            return response()->json('Reservation not found', 404);
+        }
+
         if (!$user->isAdmin() && $reservation->user_id !== $user->id) {
             return response()->json('You are not authorized to update this reservation', 403);
         }
 
         $validatedData = $request->validated();
-        $newCar = Car::findOrFail($validatedData['car_id']);
+        $newCar = Car::find($validatedData['car_id']);
+
+        if (!$newCar) {
+            return response()->json('The new car does not exist', 404);
+        }
 
         if (!$newCar->available) {
             return response()->json('The new car is not available', 400);
         }
+
+        $oldCar = $reservation->car;
+        $oldCar->update(['available' => 1]);
 
         $reservation->car_id = $newCar->id;
         $reservation->taken_at = $validatedData['taken_at'];
         $reservation->returned_at = $validatedData['returned_at'];
         $reservation->save();
 
-        $previousCar = $reservation->car;
-        $previousCar->update(['available' => 1]);
         $newCar->update(['available' => 0]);
 
         return response()->json('Reservation updated!');
     }
+
 
 
     public function destroy(string $id)

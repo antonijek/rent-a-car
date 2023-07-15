@@ -548,14 +548,6 @@
 					"response": []
 				},
 				{
-					"name": "send mail",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
 					"name": "export to excel",
 					"request": {
 						"method": "GET",
